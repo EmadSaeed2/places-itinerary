@@ -16,10 +16,10 @@
 
 <body>
     <div class="background-img">
-        <img src="assets/img/london.jpg" />
+        <img src="assets/img/london.jpg" alt="Header image" />
         <div class="background-img-overlay"></div>
     </div>  
-    <div class="wrapper">
+    <main class="wrapper">
         <header class="header">
             <div class="logo-wrapper">
                 <h1 class="logo">PLACES</h1>
@@ -47,6 +47,10 @@
                 <div class="innerContainer">
                     <p>Budget: £<span id='budget'></span></p>
                     <input type="range" min="0" max="500" value="50" class="slider" id="budgetSlider">
+                    <div class="rangeWrapper">
+                        <span>0</span>
+                        <span>500</span>
+                    </div>
                 </div>
             </div>
 
@@ -67,7 +71,7 @@
             <button class="saved-place-button">2 days in London on £50</button>
         </div>
 
-    </div>
+    </main>
     <script src="assets/js/scripts.js"></script>
 </body>
 

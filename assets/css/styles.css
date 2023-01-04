@@ -1,3 +1,10 @@
+:root {
+    --black: #171717;
+    --white: #f3f3f3;
+    --orange: #FF9C46;
+    --grey: #7B7B7B;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +13,11 @@
 }
 
 body {
-    background: #171717;
-    color: #f3f3f3;
+    background: var(--black);
+    color: var(--white);
 }
 
+/* HEADER IMAGE */
 .background-img {
     position: absolute;
     height: 150px;
@@ -17,9 +25,16 @@ body {
     z-index: -1;
 }
 .background-img-overlay {
-
+    background: linear-gradient(#17171766, #171717);
+    position: absolute;
+	top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
 }
 
+
+/* CONTAINER */
 .wrapper {
     max-width: 40rem;
     margin: 0 auto;
@@ -27,6 +42,7 @@ body {
     min-height: 100vh;
 }
 
+/* LOGO AND DARK MODE HEADER */
 .header {
     display: flex;
     justify-content: space-between;
@@ -41,10 +57,12 @@ body {
     font-size: 0.7rem;
 }
 
+
+/* USER INPUTS */
 .inputs {
     display: flex;
     flex-direction: column;
-    margin-top: 4rem;
+    margin-top: 5rem;
 }
 
 label {
@@ -63,28 +81,63 @@ label {
 button {
     border: none;
     border-radius: 50px;
-    background: #FF9C46;
+    background: var(--orange);
     padding: 8px 15px;
     color: #f3f3f3;
 }
 
+/* SLIDERS */
+
 .sliderContainer{
     width: 100%;
     text-align: left;
+    margin-top: 20px;
 }
 
 .innerContainer{
-    padding: 20px;
+    margin: 20px 0;
+    padding: 30px;
     background: #ccc;
     border-radius: 15px;
+    color: var(--grey);
 }
+
+.innerContainer input{
+    margin: 20px 0;
+}
+
+.rangeWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* RECENT ITINERARIES */
+.saved-places {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 40px 0;
+}
+
+.saved-places h3 {
+    margin: 10px 0;
+}
+
+.saved-place-button {
+    background: #e6e6e6;
+    color: #171717;
+    margin: 5px 0;
+}
+
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     input[type='range'] {
       overflow: visible;
       width: 100%;
       -webkit-appearance: none;
-      background-color: #919191;
+      background-color: var(--grey);
       border-radius: 5px;
       height: 10px;
     }
@@ -107,21 +160,3 @@ button {
 
 
 
-
-.saved-places {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 40px 0;
-}
-
-.saved-places h3 {
-    margin: 10px 0;
-}
-
-.saved-place-button {
-    background: #e6e6e6;
-    color: #171717;
-    margin: 5px 0;
-}
