@@ -10,11 +10,21 @@ body {
     color: #f3f3f3;
 }
 
+.background-img {
+    position: absolute;
+    height: 150px;
+    overflow: hidden;
+    z-index: -1;
+}
+.background-img-overlay {
+
+}
+
 .wrapper {
     max-width: 40rem;
     margin: 0 auto;
-    border: 1px solid white;
     padding: 10px;
+    min-height: 100vh;
 }
 
 .header {
@@ -56,4 +66,62 @@ button {
     background: #FF9C46;
     padding: 8px 15px;
     color: #f3f3f3;
+}
+
+.sliderContainer{
+    width: 100%;
+    text-align: left;
+}
+
+.innerContainer{
+    padding: 20px;
+    background: #ccc;
+    border-radius: 15px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: visible;
+      width: 100%;
+      -webkit-appearance: none;
+      background-color: #919191;
+      border-radius: 5px;
+      height: 10px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 16px;
+      -webkit-appearance: none;
+      height: 16px;
+      cursor: ew-resize;
+      background: #ffffff;
+      box-shadow: #ffffff 0 80px #43e5f7;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 0.5px solid #000;
+    }
+
+}
+
+  
+
+
+
+
+.saved-places {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 40px 0;
+}
+
+.saved-places h3 {
+    margin: 10px 0;
+}
+
+.saved-place-button {
+    background: #e6e6e6;
+    color: #171717;
+    margin: 5px 0;
 }

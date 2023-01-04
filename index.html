@@ -15,6 +15,10 @@
 </head>
 
 <body>
+    <div class="background-img">
+        <img src="assets/img/london.jpg" />
+        <div class="background-img-overlay"></div>
+    </div>  
     <div class="wrapper">
         <header class="header">
             <div class="logo-wrapper">
@@ -39,7 +43,7 @@
 
 
             <div class="sliderContainer">
-                <h3>What's your budget</h3>
+                <label for="budgetCounter">What's your budget</label>
                 <div class="innerContainer">
                     <p>Budget: £<span id='budget'></span></p>
                     <input type="range" min="0" max="500" value="50" class="slider" id="budgetSlider">
@@ -47,7 +51,7 @@
             </div>
 
             <div class="sliderContainer">
-                <h3>How long for?</h3>
+                <label for="daysCounter">How long for?</label>
                 <div class="innerContainer">
                     <p>Number of days: <span id='days'></span></p>
                     <input type="range" min="1" max="20" value="5" class="slider" id="daysSlider">
@@ -55,6 +59,12 @@
             </div>
         
             <button>Generate Itinerary</button>
+        </div>
+
+        <div class="saved-places">
+            <h3>Recent Itineraries:</h3>
+            <button class="saved-place-button">6 days in Paris on £500</button>
+            <button class="saved-place-button">2 days in London on £50</button>
         </div>
 
     </div>
