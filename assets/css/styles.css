@@ -84,6 +84,7 @@ button {
     background: var(--orange);
     padding: 8px 15px;
     color: #f3f3f3;
+    cursor: pointer;
 }
 
 /* SLIDERS */
@@ -109,6 +110,7 @@ button {
 .rangeWrapper{
     display: flex;
     justify-content: space-between;
+    font-weight: bold;
 }
 
 
