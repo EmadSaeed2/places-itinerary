@@ -16,9 +16,8 @@ body {
     overflow: hidden;
     z-index: -1;
 }
-.background-img-overlay {
 
-}
+.background-img-overlay {}
 
 .wrapper {
     max-width: 40rem;
@@ -68,12 +67,12 @@ button {
     color: #f3f3f3;
 }
 
-.sliderContainer{
+.sliderContainer {
     width: 100%;
     text-align: left;
 }
 
-.innerContainer{
+.innerContainer {
     padding: 20px;
     background: #ccc;
     border-radius: 15px;
@@ -81,29 +80,29 @@ button {
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     input[type='range'] {
-      overflow: visible;
-      width: 100%;
-      -webkit-appearance: none;
-      background-color: #919191;
-      border-radius: 5px;
-      height: 10px;
+        overflow: visible;
+        width: 100%;
+        -webkit-appearance: none;
+        background-color: #919191;
+        border-radius: 5px;
+        height: 10px;
     }
-    
+
     input[type='range']::-webkit-slider-thumb {
-      width: 16px;
-      -webkit-appearance: none;
-      height: 16px;
-      cursor: ew-resize;
-      background: #ffffff;
-      box-shadow: #ffffff 0 80px #43e5f7;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 0.5px solid #000;
+        width: 16px;
+        -webkit-appearance: none;
+        height: 16px;
+        cursor: ew-resize;
+        background: #ffffff;
+        box-shadow: #ffffff 0 80px #43e5f7;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 0.5px solid #000;
     }
 
 }
 
-  
+
 
 
 
