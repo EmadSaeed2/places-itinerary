@@ -136,7 +136,6 @@ button:hover {
 .innerContainer p {
   font-size: 1.2rem;
 }
-
 .rangeWrapper {
   display: flex;
   justify-content: space-between;
@@ -176,7 +175,6 @@ button:hover {
   border-radius: 15px;
   color: var(--grey);
 }
-
 .saved-place-button:hover {
   background: #343434;
 }
