@@ -1,0 +1,91 @@
+#itinerary-container {
+    margin-top: 50px;
+}
+
+/* all images */
+.i-image {
+    border-radius: 20px;
+    background-color: #ccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* itinerary-3-images */
+#itinerary-3-images {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#itinerary-3-images-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#itinerary-3-images-one {
+    width: 25rem;
+    height: 25rem;
+    background-image: url('https://api.lorem.space/image/drink');
+}
+
+#itinerary-3-images-two,
+#itinerary-3-images-three {
+    width: 12rem;
+    height: 12rem;
+}
+
+#itinerary-3-images-two {
+    background-image: url('https://api.lorem.space/image/burger');
+}
+
+#itinerary-3-images-three {
+    background-image: url('https://api.lorem.space/image/pizza');
+}
+
+/* itinerary-1-image */
+#itinerary-1-image {
+    width: 100%;
+    height: 12rem;
+    margin-top: 20px;
+    background-image: url('https://api.lorem.space/image/house');
+}
+
+/* itinerary-2-images */
+#itinerary-2-images {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#itinerary-2-images-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#itinerary-2-images-one {
+    width: 25rem;
+    height: 12rem;
+    background-image: url('https://api.lorem.space/image/drink');
+}
+
+#itinerary-2-images-two {
+    width: 12rem;
+    height: 12rem;
+    background-image: url('https://api.lorem.space/image/burger');
+}
+
+p.itinerary-p {
+    font-size: 1.3rem;
+    margin-top: 20px;
+}
+
+#new-itinerary-button {
+    width: 100%;
+    margin: 40px 0;
+    height: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
