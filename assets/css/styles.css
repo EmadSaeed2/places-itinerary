@@ -136,6 +136,11 @@ button:hover {
 .innerContainer p {
   font-size: 1.2rem;
 }
+.rangeWrapper {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
 
 .innerContainer p span {
   color: lightgrey;
