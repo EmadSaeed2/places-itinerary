@@ -4,7 +4,7 @@ var sliderBudget = document.getElementById('budgetSlider');
 var outputBudget = document.getElementById('budget');
 
 outputBudget.innerHTML = sliderBudget.value;
-sliderBudget.oninput = function (){
+sliderBudget.oninput = function () {
     outputBudget.innerHTML = this.value;
     budget = this.value;
 }
@@ -13,7 +13,7 @@ var sliderDays = document.getElementById('daysSlider');
 var outputDays = document.getElementById('days');
 
 outputDays.innerHTML = sliderDays.value;
-sliderDays.oninput = function (){
+sliderDays.oninput = function () {
     outputDays.innerHTML = this.value;
     days = this.value;
 }
