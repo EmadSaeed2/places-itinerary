@@ -1,4 +1,5 @@
 var autocomplete;
+var autoCity;
 
 function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
@@ -16,6 +17,7 @@ function onPlaceChanged() {
         console.log('invalid input')
     } else {
         // console.log(placeData);
+        autoCity = document.querySelector('.autocomplete').value;
 
         var photosArr = placeData.photos;
         for (var photo of photosArr) {
