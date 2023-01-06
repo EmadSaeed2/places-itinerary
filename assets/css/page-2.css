@@ -4,7 +4,7 @@
 
 /* all images */
 .i-image {
-    border-radius: 20px;
+    border-radius: 15px;
     background-color: #ccc;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,40 +14,30 @@
 /* itinerary-3-images */
 #itinerary-3-images {
     margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+    height: 330px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 15px;
 }
 
-#itinerary-3-images-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-#itinerary-3-images-one {
-    width: 25rem;
-    height: 25rem;
+#img-one {
+    grid-area: 1 / 1 / 3 / 3;
     background-image: url('https://api.lorem.space/image/drink');
 }
 
-#itinerary-3-images-two,
-#itinerary-3-images-three {
-    width: 12rem;
-    height: 12rem;
-}
-
-#itinerary-3-images-two {
+#img-two {
     background-image: url('https://api.lorem.space/image/burger');
 }
 
-#itinerary-3-images-three {
+#img-three {
     background-image: url('https://api.lorem.space/image/pizza');
 }
 
-/* itinerary-1-image */
-#itinerary-1-image {
+#img-4 {
     width: 100%;
-    height: 12rem;
+    height: 160px;
     margin-top: 20px;
     background-image: url('https://api.lorem.space/image/house');
 }
@@ -55,25 +45,19 @@
 /* itinerary-2-images */
 #itinerary-2-images {
     margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+    height: 160px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 15px;
 }
 
-#itinerary-2-images-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-#itinerary-2-images-one {
-    width: 25rem;
-    height: 12rem;
+#img-5 {
     background-image: url('https://api.lorem.space/image/drink');
+    grid-area: 1 / 1 / 2 / 3;
 }
 
-#itinerary-2-images-two {
-    width: 12rem;
-    height: 12rem;
+#img-6 {
     background-image: url('https://api.lorem.space/image/burger');
 }
 
@@ -88,4 +72,19 @@ p.itinerary-p {
     height: 50px;
     font-size: 1.5em;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        padding: 15px;
+    }
+
+    #itinerary-3-images {
+        height: 238px;
+    }
+
+    #img-4,
+    #itinerary-2-images {
+        height: 106px;
+    }
 }
