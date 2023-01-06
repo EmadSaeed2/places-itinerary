@@ -42,7 +42,7 @@
       <div class="inputs">
         <label for="place">Where are you going?</label>
         <input
-          class="place-input"
+          class="place-input autocomplete"
           id="place"
           type="text"
           placeholder="London, Paris etc."
@@ -80,9 +80,9 @@
               id="daysSlider"
             />
             <div class="rangeWrapper">
-                <span>1</span>
-                <span>10</span>
-              </div>
+              <span>1</span>
+              <span>10</span>
+            </div>
           </div>
         </div>
 
@@ -95,6 +95,14 @@
         <button class="saved-place-button">2 days in London on £50</button>
       </div>
     </main>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIOY0-UkFYzzpnPcS0lbIDWVKkkQE9S8g&libraries=places&callback=initAutocomplete"
+      async
+      defer
+    ></script>
+
+    <script src="assets/js/autocomplete.js"></script>
     <script src="assets/js/scripts.js"></script>
   </body>
 </html>
