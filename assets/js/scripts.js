@@ -32,9 +32,9 @@ var submit = document.querySelector('#submitBtn');
 var city = document.querySelector('.place-input');
 var cityName = '';
 
-submit.addEventListener('click', function(){
+submit.addEventListener('click', function () {
     var cityName = city.value;
-    console.log(`Give me a ${days} days itinerary to visit ${cityName} with £${budget}`);
+    console.log(`Give me a ${days} days itinerary to visit ${autoCity} with £${budget}`);
 })
 
 
