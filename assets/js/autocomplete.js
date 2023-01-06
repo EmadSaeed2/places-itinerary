@@ -1,5 +1,3 @@
-var city;
-var photosArr;
 var autocomplete;
 
 function initAutocomplete() {
@@ -18,10 +16,8 @@ function onPlaceChanged() {
         console.log('invalid input')
     } else {
         // console.log(placeData);
-        city = document.querySelector('.autocomplete').value;
-        console.log(city);
 
-        photosArr = placeData.photos;
+        var photosArr = placeData.photos;
         for (var photo of photosArr) {
             console.log(photo.getUrl());
         }
