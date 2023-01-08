@@ -47,7 +47,8 @@ submit.addEventListener('click', function () {
         };
 
         openAiPrompt = `Give me a ${userInput.days} days itinerary to visit ${userInput.city} with £${userInput.budget}`
-
+        console.log(openAiPrompt);
+        getCompletion();
 
     }
 })

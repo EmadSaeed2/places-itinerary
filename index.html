@@ -12,6 +12,8 @@
 
   <title>Places Itinerary Generator</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/page-2.css">
+
 </head>
 
 <body>
@@ -40,7 +42,7 @@
         <label for="budgetCounter">What's your budget?</label>
         <div class="innerContainer">
           <p>Budget: <span>£</span><span id="budget"></span></p>
-          <input type="range" min="0" max="500" value="50" class="slider" id="budgetSlider" />
+          <input type="range" min="0" max="500" value="50" step="50" class="slider" id="budgetSlider" />
           <div class="rangeWrapper">
             <span>£0</span>
             <span>£500</span>
@@ -62,6 +64,17 @@
 
       <button id="submitBtn">Create Itinerary</button>
     </div>
+    <main id="itinerary-container">
+      <h1 id="itinerary-city">Paris</h1>
+      <h4 id="itinerary-country">France</h4>
+      <div id="itinerary-3-images">
+          <div id="img-one" class="i-image"></div>
+          <div id="img-two" class="i-image"></div>
+          <div id="img-three" class="i-image"></div>
+      </div>
+      <div id="itinerary-plan">
+      </div>
+    </main>
 
     <div class="saved-places">
       <label>Your itineraries:</label>
@@ -73,8 +86,9 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIOY0-UkFYzzpnPcS0lbIDWVKkkQE9S8g&libraries=places&callback=initAutocomplete"
     async defer></script>
 
-  <script src="assets/js/autocomplete.js"></script>
-  <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/autocomplete.js"></script>
+    <script src="assets/js/bundle.js"></script>
+  <!-- <script src="assets/js/scripts.js"></script> -->
 </body>
 
 </html>
