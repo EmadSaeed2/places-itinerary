@@ -1,8 +1,11 @@
 :root {
-  --black: #121212;
-  --white: #f3f3f3;
+  --bg-color: #f3f3f3;
+  --text-color: #121212;
   --orange: #ffa95f;
   --grey: #7b7b7b;
+  --gradient: linear-gradient(#f3f3f388, #f3f3f3);
+  --input: #fff;
+  --icon: url("assets/img/moon-solid.svg");
 }
 
 * {
@@ -21,8 +24,8 @@
 }
 
 body {
-  background: var(--black);
-  color: var(--white);
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* HEADER IMAGE */
@@ -40,7 +43,7 @@ body {
 }
 
 .background-img-overlay {
-  background: linear-gradient(#12121288, #121212);
+  background: var(--gradient);
   position: absolute;
   top: 0px;
   right: 0px;
@@ -71,7 +74,7 @@ body {
   font-size: 0.7rem;
 }
 
-.header svg {
+.icon svg {
   cursor: pointer;
 }
 
@@ -93,7 +96,7 @@ label {
   border: none;
   outline: none;
   border-radius: 50px;
-  background: #242424;
+  background: var(--input);
   padding: 10px 25px;
   font-size: 1.2rem;
   border: 1px solid rgba(230, 230, 230, 0.05);
@@ -101,7 +104,7 @@ label {
 }
 
 .place-input:hover {
-  background: #343434;
+  filter: brightness(110%);
 }
 
 button {
@@ -109,7 +112,7 @@ button {
   border-radius: 50px;
   background: var(--orange);
   padding: 10px 15px;
-  color: var(--black);
+  color: var(--bg-color);
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -131,14 +134,14 @@ button:hover {
 .innerContainer {
   margin-top: 15px;
   padding: 30px;
-  background: #242424;
+  background: var(--input);
   border: 1px solid rgba(230, 230, 230, 0.05);
   border-radius: 15px;
   color: var(--grey);
 }
 
 .innerContainer:hover {
-  background: #343434;
+  filter: brightness(110%);
 }
 
 .innerContainer p {
@@ -149,10 +152,6 @@ button:hover {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
-}
-
-.innerContainer p span {
-  color: lightgrey;
 }
 
 .innerContainer input {
@@ -178,7 +177,7 @@ button:hover {
 }
 
 .saved-place-button {
-  background: #242424;
+  background: var(--input);
   margin: 5px 0;
   border: 1px solid rgba(230, 230, 230, 0.05);
   border-radius: 15px;
@@ -186,7 +185,8 @@ button:hover {
 }
 
 .saved-place-button:hover {
-  background: #343434;
+  background: var(--input);
+  filter: brightness(110%);
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
