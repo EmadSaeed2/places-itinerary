@@ -14,6 +14,15 @@ var openAiItinerary;
 
 var itineraryPlan = document.querySelector("#itinerary-plan");
 
+var userInput = {
+  city: '',
+  days: '',
+  budget: ''
+};
+
+
+//Get the itinerary from OpenAi
+
 async function getCompletion() {
   try {
     const response = await tectalicOpenai(
@@ -54,14 +63,60 @@ sliderDays.oninput = function (e) {
   days = e.target.value;
 };
 
-//SHOW THE SAVED ITINERARIES ON HOMEPAGE: BUTTONS
-
-//ALLOW USER TO SEARCH FOR A CITY
-//INCLUDE THE GOOGLE PLACES API (AUTOCOMPLETE)
-
 //GET THE INPUTS: CITY, BUDGET & DAYS
 var submit = document.querySelector("#submitBtn");
 var openAiPrompt = "";
+
+function getUserInput(){
+    userInput.city = autoCity,
+    userInput.days = days,
+    userInput.budget = budget,
+}
+
+function updateLocalStorage(){
+  
+}
+
+
+function updateItineraryUI(userInput){
+
+
+  savedInputs.unshift(userInput);
+
+  if (savedInputs.length > 5) {
+    savedInputs.pop();
+  }
+
+  generateSavedInputs(savedInputs);
+
+
+  var itineraryContainer = document.querySelector("#itinerary-container");
+  itineraryContainer.classList.remove("hidden");
+
+  var formContainer = document.getElementById("inputContainer");
+  formContainer.classList.add("hidden");
+
+  openAiPrompt = `Give me a ${userInput.days} days itinerary to visit ${userInput.city} with £${userInput.budget}. Don't include the departure as last day. Include a html <br> tag after each day. Wrap each day in a h4 tag and the day content in a p tag.`;
+  console.log(openAiPrompt);
+  getCompletion();
+
+  document.querySelector("#itinerary-city").innerText = placeName;
+
+  var imageOne = document.querySelector("#img-one");
+  imageOne.style.backgroundImage = `url('${photosArr[0].getUrl()}')`;
+
+  var imageTwo = document.querySelector("#img-two");
+  imageTwo.style.backgroundImage = `url('${photosArr[1].getUrl()}')`;
+
+  var imageThree = document.querySelector("#img-three");
+  imageThree.style.backgroundImage = `url('${photosArr[2].getUrl()}')`;
+
+  var backButton = document.querySelector("#back");
+  backButton.addEventListener("click", function () {
+    itineraryContainer.classList.add("hidden");
+    formContainer.classList.remove("hidden");
+  });
+}
 
 submit.addEventListener("click", function () {
   if (!autoCity) {
@@ -69,48 +124,8 @@ submit.addEventListener("click", function () {
 
     console.log("invalid input");
   } else {
-    var userInput = {
-      city: autoCity,
-      days: days,
-      budget: budget,
-    };
-
-    savedInputs.unshift(userInput);
-
-    if (savedInputs.length > 5) {
-      savedInputs.pop();
-    }
-
-    generateSavedInputs(savedInputs);
-
-    localStorage.setItem("places", JSON.stringify(savedInputs));
-
-    var itineraryContainer = document.querySelector("#itinerary-container");
-    itineraryContainer.classList.remove("hidden");
-
-    var formContainer = document.getElementById("inputContainer");
-    formContainer.classList.add("hidden");
-
-    openAiPrompt = `Give me a ${userInput.days} days itinerary to visit ${userInput.city} with £${userInput.budget}. Don't include the departure as last day. Include a html <br> tag after each day. Wrap each day in a h4 tag and the day content in a p tag.`;
-    console.log(openAiPrompt);
-    getCompletion();
-
-    document.querySelector("#itinerary-city").innerText = placeName;
-
-    var imageOne = document.querySelector("#img-one");
-    imageOne.style.backgroundImage = `url('${photosArr[0].getUrl()}')`;
-
-    var imageTwo = document.querySelector("#img-two");
-    imageTwo.style.backgroundImage = `url('${photosArr[1].getUrl()}')`;
-
-    var imageThree = document.querySelector("#img-three");
-    imageThree.style.backgroundImage = `url('${photosArr[2].getUrl()}')`;
-
-    var backButton = document.querySelector("#back");
-    backButton.addEventListener("click", function () {
-      itineraryContainer.classList.add("hidden");
-      formContainer.classList.remove("hidden");
-    });
+    getUserInput()
+    updateItineraryUI(userInput);
   }
 });
 
