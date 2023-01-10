@@ -1,28 +1,31 @@
 var autocomplete;
 var autoCity;
-var placeInput = document.querySelector('.autocomplete');
+var photosArr;
+var placeInput = document.querySelector(".autocomplete");
+var placeName;
 
 function initAutocomplete() {
-    autocomplete = new google.maps.places.Autocomplete(
-        document.querySelector('.autocomplete'), {
-        types: ['(cities)']
-    });
-    autocomplete.addListener('place_changed', onPlaceChanged);
+  autocomplete = new google.maps.places.Autocomplete(
+    document.querySelector(".autocomplete"),
+    {
+      types: ["(cities)"],
+    }
+  );
+  autocomplete.addListener("place_changed", onPlaceChanged);
 }
 
 function onPlaceChanged() {
-    var placeData = autocomplete.getPlace();
+  var placeData = autocomplete.getPlace();
 
-    if (!placeData.geometry) { //validate the user input
-        placeInput.placeholder = 'Please enter and select a city';
-    } else {
-        // console.log(placeData);
-        document.querySelector('.error').classList.add('display-none');
+  if (!placeData.geometry) {
+    //validate the user input
+    placeInput.placeholder = "Please enter and select a city";
+  } else {
+    // console.log(placeData);
+    document.querySelector(".error").classList.add("hidden");
 
-        autoCity = document.querySelector('.autocomplete').value;
-        var photosArr = placeData.photos;
-        for (var photo of photosArr) {
-            console.log(photo.getUrl());
-        }
-    }
+    autoCity = document.querySelector(".autocomplete").value;
+    photosArr = placeData.photos;
+    placeName = placeData.formatted_address;
+  }
 }
