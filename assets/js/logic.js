@@ -138,3 +138,21 @@ function updateItineraryTextUI() {
     itineraryText.innerHTML = 'Please wait we building your itinerary';
     itineraryText.insertAdjacentHTML("afterend", `<p >${itineraryObj.itineraryText}</p>`);
 }
+
+/* *************************************************************************** */
+// ON CREAT-ITINERARY-BUTTON CLICKED
+/* *************************************************************************** */
+var createItinerarBtn = document.querySelector("#submitBtn");
+createItinerarBtn.addEventListener("click", function () {
+    // Check if there is a city
+    if (!autoCity) {
+        // display error message
+        document.querySelector(".error").classList.remove("hidden");
+        console.log("invalid city input");
+    } else {
+        itineraryObj.city = autoCity;
+        displayItineraryUI();
+        updateItineraryImagesUI();
+        getDataFromOpenAI();
+    }
+});
