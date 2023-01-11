@@ -156,3 +156,11 @@ createItinerarBtn.addEventListener("click", function () {
         getDataFromOpenAI();
     }
 });
+
+/* *************************************************************************** */
+// ON NEW-ITINERARY-BUTTON CLICKED
+/* *************************************************************************** */
+var newItineraryBtn = document.querySelector("#back");
+newItineraryBtn.addEventListener("click", function () {
+    displayInputsUI()
+});
