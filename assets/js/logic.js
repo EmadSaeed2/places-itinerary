@@ -49,3 +49,16 @@ function updateLocalStorage() {
     }
     localStorage.setItem("itinerariesData", JSON.stringify(itinerariesData));
 }
+
+/* *************************************************************************** */
+// CREATE SAVED-PLACE-BUTTON
+/* *************************************************************************** */
+function createSavedPlaceButton() {
+    var savedInputContainer = document.querySelector("#saved-inputs");
+    savedInputContainer.innerHTML = "";
+    for (var saved of itinerariesData) {
+        savedInputContainer.insertAdjacentHTML(
+            "beforeend", `<button class="saved-place-button">${saved.days} days in ${saved.city} on £${saved.budget}</button>`
+        );
+    }
+}
