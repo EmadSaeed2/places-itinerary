@@ -10,6 +10,7 @@ var itineraryObj = {
 };
 
 var itineraryPlan = document.querySelector("#itinerary-plan");
+var itineraryCityHeader = document.querySelector("#itinerary-city");
 
 /* *************************************************************************** */
 //GET THE INPUTS: BUDGET & DAYS
@@ -86,8 +87,9 @@ function getDataFromOpenAI() {
     var API_KEY = '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';
     var API_URL = 'https://api.openai.com/v1/engines/text-davinci-002/completions';
 
-    var prompt = `Give me a ${itineraryObj.days} days itinerary to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day. Include a html <br> tag after each day. Wrap each day in a h4 tag and the day content in a p tag.`;
+    // var prompt = `Give me a ${itineraryObj.days} days itinerary to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day. Include a html <br> tag after each day. Wrap each day in a h4 tag and the day content in a p tag.`;
     // var prompt = `Give me a ${itineraryObj.days} days itinerary to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day. Include html <h2> tags for the headers and html <p> tags for paragraphs`;
+    var prompt = `Give me a ${itineraryObj.days} days itinerary to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day.`;
 
     var options = {
         method: 'POST',
@@ -105,8 +107,9 @@ function getDataFromOpenAI() {
     fetch(API_URL, options)
         .then(function (response) { return response.json() })
         .then(function (data) {
-            itineraryObj.itineraryText = data.choices[0].text;
-            console.log(data.choices[0].text);
+            var planText = data.choices[0].text.replaceAll('Day', '<br><br>Day');
+            itineraryObj.itineraryText = `<p>${planText}</p>`;
+            console.log(planText);
         }).then(function () {
             updateItineraryTextUI()
             updateLocalStorage();
@@ -145,7 +148,6 @@ function updateItineraryImagesUI() {
 }
 
 function updateItineraryTextUI() {
-    var itineraryCityHeader = document.querySelector("#itinerary-city");
     itineraryCityHeader.innerText = itineraryObj.city;
 
     document.querySelector('#wait').classList.add('hidden');
@@ -157,7 +159,8 @@ function updateItineraryTextUI() {
 // ON CREAT-ITINERARY-BUTTON CLICKED
 /* *************************************************************************** */
 var createItinerarBtn = document.querySelector("#submitBtn");
-createItinerarBtn.addEventListener("click", function () {
+createItinerarBtn.addEventListener("click", function (e) {
+    e.preventDefault();
     // Check if there is a city
     if (!autoCity) {
         // display error message
@@ -165,6 +168,7 @@ createItinerarBtn.addEventListener("click", function () {
         console.log("invalid city input");
     } else {
         itineraryPlan.innerHTML = '';
+        itineraryCityHeader.innerText = '';
         UpdateItineraryObj()
         displayItineraryUI();
         updateItineraryImagesUI();
@@ -176,33 +180,35 @@ createItinerarBtn.addEventListener("click", function () {
 // ON NEW-ITINERARY-BUTTON CLICKED
 /* *************************************************************************** */
 var newItineraryBtn = document.querySelector("#back");
-newItineraryBtn.addEventListener("click", function () {
+newItineraryBtn.addEventListener("click", function (e) {
+    e.preventDefault();
     displayInputsUI()
 });
 
 /* *************************************************************************** */
 // ON SAVED-PLACE-BUTTON CLICKED
 /* *************************************************************************** */
-var savedPlaceBtns = document.querySelectorAll(".saved-place-button");
-savedPlaceBtns.forEach(savedPlaceBtns => {
-    savedPlaceBtns.addEventListener("click", function (e) {
-        e.preventDefault();
-        btnId = e.target.getAttribute("id");;
-        console.log(btnId);
-        var savedObj = itinerariesData.find(function (obj) {
-            return obj.id === btnId;
-        });
-        console.log(savedObj);
-        itineraryObj.city = savedObj.city;
-        itineraryObj.days = savedObj.days;
-        itineraryObj.budget = savedObj.budget;
-        itineraryObj.itineraryText = savedObj.itineraryText;
-        itineraryObj.imgOneUrl = savedObj.imgOneUrl;
-        itineraryObj.imgTwoUrl = savedObj.imgTwoUrl;
-        itineraryObj.imgThreeUrl = savedObj.imgThreeUrl;
+var savedInputs = document.querySelector("#saved-inputs");
 
-        displayItineraryUI();
-        updateItineraryImagesUI();
-        updateItineraryTextUI();
+savedInputs.addEventListener("click", function (e) {
+    console.log(e.target)
+
+    btnId = e.target.getAttribute("id");;
+    console.log(btnId);
+    var savedObj = itinerariesData.find(function (obj) {
+        return obj.id === btnId;
     });
+    console.log(savedObj);
+    itineraryObj.city = savedObj.city;
+    itineraryObj.days = savedObj.days;
+    itineraryObj.budget = savedObj.budget;
+    itineraryObj.itineraryText = savedObj.itineraryText;
+    itineraryObj.imgOneUrl = savedObj.imgOneUrl;
+    itineraryObj.imgTwoUrl = savedObj.imgTwoUrl;
+    itineraryObj.imgThreeUrl = savedObj.imgThreeUrl;
+
+    displayItineraryUI();
+    updateItineraryImagesUI();
+    updateItineraryTextUI();
+
 });
