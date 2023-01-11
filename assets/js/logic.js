@@ -62,3 +62,40 @@ function createSavedPlaceButton() {
         );
     }
 }
+
+/* *************************************************************************** */
+// GET DATA FROM OPEN-AI
+/* *************************************************************************** */
+function getDataFromOpenAI() {
+    var API_KEY = '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';
+    var API_URL = 'https://api.openai.com/v1/engines/text-davinci-002/completions';
+
+    var prompt = `Give me a ${itineraryObj.days} days itinerary to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day. Include a html <br> tag after each day. Wrap each day in a h4 tag and the day content in a p tag.`;
+
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${API_KEY}`
+        },
+        body: JSON.stringify({
+            prompt: prompt,
+            temperature: 0.5,
+            max_tokens: 4000,
+        })
+    };
+
+    fetch(API_URL, options)
+        .then(response => response.json())
+        .then(data => {
+            itineraryObj.itineraryText = data.choices[0].text;
+            console.log(data.choices[0].text);
+        }).then(function () {
+            updateItineraryTextUI()
+            updateLocalStorage();
+            createSavedPlaceButton();
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
