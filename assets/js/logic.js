@@ -1,4 +1,5 @@
 var itineraryObj = {
+    id: 0,
     city: '',
     days: 5,
     budget: 50,
@@ -8,8 +9,10 @@ var itineraryObj = {
     imgThreeUrl: '',
 };
 
+var itineraryPlan = document.querySelector("#itinerary-plan");
+
 /* *************************************************************************** */
-//GET THE INPUTS: CITY, BUDGET & DAYS
+//GET THE INPUTS: BUDGET & DAYS
 /* *************************************************************************** */
 var sliderBudget = document.getElementById("budgetSlider");
 var outputBudget = document.getElementById("budget");
@@ -36,13 +39,16 @@ if (!localStorage.getItem("itinerariesData")) {
     localStorage.setItem("itinerariesData", JSON.stringify(itinerariesData));
 } else {
     itinerariesData = JSON.parse(localStorage.getItem("itinerariesData"));
-    console.log(itinerariesData)
+    console.log(itinerariesData);
+    createSavedPlaceButton();
 }
 
 /* *************************************************************************** */
 // UPDATE ITINERARIES DATA ON LOCAL-STORAGE
 /* *************************************************************************** */
 function updateLocalStorage() {
+    itineraryObj.id = `${itineraryObj.city.replace(/\s/g, '')}-${itineraryObj.days}-${itineraryObj.budget}`;
+    console.log(itineraryObj.id);
     itinerariesData.unshift(itineraryObj);
     if (itinerariesData.length > 5) {
         itinerariesData.pop();
@@ -58,9 +64,19 @@ function createSavedPlaceButton() {
     savedInputContainer.innerHTML = "";
     for (var saved of itinerariesData) {
         savedInputContainer.insertAdjacentHTML(
-            "beforeend", `<button class="saved-place-button">${saved.days} days in ${saved.city} on £${saved.budget}</button>`
+            "beforeend", `<button class="saved-place-button" id=${saved.id}>${saved.days} days in ${saved.city} on £${saved.budget}</button>`
         );
     }
+}
+
+/* *************************************************************************** */
+// UPDATE ITINERARY OBJECT
+/* *************************************************************************** */
+function UpdateItineraryObj() {
+    itineraryObj.city = autoCity;
+    itineraryObj.imgOneUrl = `url('${photosArr[0].getUrl()}')`;
+    itineraryObj.imgTwoUrl = `url('${photosArr[1].getUrl()}')`;
+    itineraryObj.imgThreeUrl = `url('${photosArr[2].getUrl()}')`;
 }
 
 /* *************************************************************************** */
@@ -71,6 +87,7 @@ function getDataFromOpenAI() {
     var API_URL = 'https://api.openai.com/v1/engines/text-davinci-002/completions';
 
     var prompt = `Give me a ${itineraryObj.days} days itinerary to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day. Include a html <br> tag after each day. Wrap each day in a h4 tag and the day content in a p tag.`;
+    // var prompt = `Give me a ${itineraryObj.days} days itinerary to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day. Include html <h2> tags for the headers and html <p> tags for paragraphs`;
 
     var options = {
         method: 'POST',
@@ -86,8 +103,8 @@ function getDataFromOpenAI() {
     };
 
     fetch(API_URL, options)
-        .then(response => response.json())
-        .then(data => {
+        .then(function (response) { return response.json() })
+        .then(function (data) {
             itineraryObj.itineraryText = data.choices[0].text;
             console.log(data.choices[0].text);
         }).then(function () {
@@ -95,7 +112,7 @@ function getDataFromOpenAI() {
             updateLocalStorage();
             createSavedPlaceButton();
         })
-        .catch(error => {
+        .catch(function (error) {
             console.error(error);
         });
 }
@@ -118,25 +135,22 @@ function displayInputsUI() {
 
 function updateItineraryImagesUI() {
     var imageOne = document.querySelector("#img-one");
-    itineraryObj.imgOneUrl = `url('${photosArr[0].getUrl()}')`;
     imageOne.style.backgroundImage = itineraryObj.imgOneUrl;
 
     var imageTwo = document.querySelector("#img-two");
-    itineraryObj.imgOneUrl = `url('${photosArr[1].getUrl()}')`;
-    imageTwo.style.backgroundImage = itineraryObj.imgOneUrl;
+    imageTwo.style.backgroundImage = itineraryObj.imgTwoUrl;
 
     var imageThree = document.querySelector("#img-three");
-    itineraryObj.imgOneUrl = `url('${photosArr[2].getUrl()}')`;
-    imageThree.style.backgroundImage = itineraryObj.imgOneUrl;
+    imageThree.style.backgroundImage = itineraryObj.imgThreeUrl;
 }
 
 function updateItineraryTextUI() {
     var itineraryCityHeader = document.querySelector("#itinerary-city");
-    itineraryCityHeader.innerText = placeName;
+    itineraryCityHeader.innerText = itineraryObj.city;
 
-    var itineraryText = document.querySelector("#itinerary-plan");
-    itineraryText.innerHTML = 'Please wait we building your itinerary';
-    itineraryText.insertAdjacentHTML("afterend", `<p >${itineraryObj.itineraryText}</p>`);
+    document.querySelector('#wait').classList.add('hidden');
+
+    itineraryPlan.innerHTML = `${itineraryObj.itineraryText}`;
 }
 
 /* *************************************************************************** */
@@ -150,7 +164,8 @@ createItinerarBtn.addEventListener("click", function () {
         document.querySelector(".error").classList.remove("hidden");
         console.log("invalid city input");
     } else {
-        itineraryObj.city = autoCity;
+        itineraryPlan.innerHTML = '';
+        UpdateItineraryObj()
         displayItineraryUI();
         updateItineraryImagesUI();
         getDataFromOpenAI();
@@ -163,4 +178,31 @@ createItinerarBtn.addEventListener("click", function () {
 var newItineraryBtn = document.querySelector("#back");
 newItineraryBtn.addEventListener("click", function () {
     displayInputsUI()
+});
+
+/* *************************************************************************** */
+// ON SAVED-PLACE-BUTTON CLICKED
+/* *************************************************************************** */
+var savedPlaceBtns = document.querySelectorAll(".saved-place-button");
+savedPlaceBtns.forEach(savedPlaceBtns => {
+    savedPlaceBtns.addEventListener("click", function (e) {
+        e.preventDefault();
+        btnId = e.target.getAttribute("id");;
+        console.log(btnId);
+        var savedObj = itinerariesData.find(function (obj) {
+            return obj.id === btnId;
+        });
+        console.log(savedObj);
+        itineraryObj.city = savedObj.city;
+        itineraryObj.days = savedObj.days;
+        itineraryObj.budget = savedObj.budget;
+        itineraryObj.itineraryText = savedObj.itineraryText;
+        itineraryObj.imgOneUrl = savedObj.imgOneUrl;
+        itineraryObj.imgTwoUrl = savedObj.imgTwoUrl;
+        itineraryObj.imgThreeUrl = savedObj.imgThreeUrl;
+
+        displayItineraryUI();
+        updateItineraryImagesUI();
+        updateItineraryTextUI();
+    });
 });
