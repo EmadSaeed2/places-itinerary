@@ -99,3 +99,42 @@ function getDataFromOpenAI() {
             console.error(error);
         });
 }
+
+/* *************************************************************************** */
+// DISPLAY AND UPDATE UI
+/* *************************************************************************** */
+var itineraryContainer = document.querySelector("#itinerary-container");
+var formContainer = document.getElementById("inputContainer");
+
+function displayItineraryUI() {
+    itineraryContainer.classList.remove("hidden");
+    formContainer.classList.add("hidden");
+}
+
+function displayInputsUI() {
+    itineraryContainer.classList.add("hidden");
+    formContainer.classList.remove("hidden");
+}
+
+function updateItineraryImagesUI() {
+    var imageOne = document.querySelector("#img-one");
+    itineraryObj.imgOneUrl = `url('${photosArr[0].getUrl()}')`;
+    imageOne.style.backgroundImage = itineraryObj.imgOneUrl;
+
+    var imageTwo = document.querySelector("#img-two");
+    itineraryObj.imgOneUrl = `url('${photosArr[1].getUrl()}')`;
+    imageTwo.style.backgroundImage = itineraryObj.imgOneUrl;
+
+    var imageThree = document.querySelector("#img-three");
+    itineraryObj.imgOneUrl = `url('${photosArr[2].getUrl()}')`;
+    imageThree.style.backgroundImage = itineraryObj.imgOneUrl;
+}
+
+function updateItineraryTextUI() {
+    var itineraryCityHeader = document.querySelector("#itinerary-city");
+    itineraryCityHeader.innerText = placeName;
+
+    var itineraryText = document.querySelector("#itinerary-plan");
+    itineraryText.innerHTML = 'Please wait we building your itinerary';
+    itineraryText.insertAdjacentHTML("afterend", `<p >${itineraryObj.itineraryText}</p>`);
+}
