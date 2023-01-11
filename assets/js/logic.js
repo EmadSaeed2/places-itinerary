@@ -38,3 +38,14 @@ if (!localStorage.getItem("itinerariesData")) {
     itinerariesData = JSON.parse(localStorage.getItem("itinerariesData"));
     console.log(itinerariesData)
 }
+
+/* *************************************************************************** */
+// UPDATE ITINERARIES DATA ON LOCAL-STORAGE
+/* *************************************************************************** */
+function updateLocalStorage() {
+    itinerariesData.unshift(itineraryObj);
+    if (itinerariesData.length > 5) {
+        itinerariesData.pop();
+    }
+    localStorage.setItem("itinerariesData", JSON.stringify(itinerariesData));
+}
