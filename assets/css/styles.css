@@ -23,6 +23,11 @@
   display: none !important;
 }
 
+#wait {
+  margin-top: 30px;
+  color: var(--orange);
+}
+
 body {
   background: var(--bg-color);
   color: var(--text-color);

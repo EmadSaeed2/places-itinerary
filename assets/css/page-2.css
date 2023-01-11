@@ -2,6 +2,11 @@
   margin-top: 50px;
 }
 
+#itinerary-container h2 {
+  margin-top: 20px;
+  color: var(--orange);
+}
+
 /* all images */
 .i-image {
   border-radius: 15px;
