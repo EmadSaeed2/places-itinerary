@@ -25,7 +25,7 @@
 
 #wait {
   margin-top: 30px;
-  color: var(--orange);
+  color: var(--text-color);
 }
 
 body {
@@ -71,6 +71,10 @@ body {
   align-items: center;
 }
 
+#header-image {
+  min-width: 100%;
+}
+
 .logo {
   font-size: 1.56rem;
 }
@@ -105,11 +109,51 @@ label {
   padding: 10px 25px;
   font-size: 1.2rem;
   border: 1px solid rgba(230, 230, 230, 0.05);
-  color: lightgrey;
+  color: inherit;
 }
 
 .place-input:hover {
   filter: brightness(110%);
+}
+
+/* PLACES AUTOCOMPLETE */
+.pac-container {
+  background: var(--input);
+  filter: brightness(120%);
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid rgba(230, 230, 230, 0.05);
+}
+
+.pac-icon {
+  margin-right: 10px;
+}
+
+.pac-item {
+  border-radius: 30px;
+  margin-bottom: 5px;
+  padding: 4px 15px;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.pac-item:hover {
+  background: var(--input);
+  filter: brightness(110%);
+}
+
+.pac-item-query {
+  color: var(--text-color);
+}
+
+.pac-matched {
+  color: var(--text-color);
+}
+
+.pac-container:after {
+  /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+  opacity: 70%;
 }
 
 button {
@@ -138,7 +182,7 @@ button:hover {
 
 .innerContainer {
   margin-top: 15px;
-  padding: 30px;
+  padding: 10px 30px 30px;
   background: var(--input);
   border: 1px solid rgba(230, 230, 230, 0.05);
   border-radius: 15px;
@@ -182,16 +226,134 @@ button:hover {
 }
 
 .saved-place-button {
+  width: 100%;
   background: var(--input);
   margin: 5px 0;
   border: 1px solid rgba(230, 230, 230, 0.05);
-  border-radius: 15px;
+  border-radius: 30px;
   color: var(--grey);
 }
 
 .saved-place-button:hover {
   background: var(--input);
   filter: brightness(110%);
+}
+
+#back {
+  width: 100%;
+  margin: 40px 0;
+  border-radius: 30px;
+}
+
+#itinerary-container {
+  margin-top: 50px;
+}
+
+#itinerary-container h2 {
+  margin-top: 20px;
+  color: var(--orange);
+}
+
+#itinerary-plan {
+  transform: translateY(-20px);
+}
+
+/* all images */
+.i-image {
+  border-radius: 15px;
+  background-color: #ccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* itinerary-3-images */
+#itinerary-3-images {
+  margin-top: 20px;
+  height: 330px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 15px;
+}
+
+#img-one {
+  grid-area: 1 / 1 / 3 / 3;
+  background-image: url("https://api.lorem.space/image/drink");
+}
+
+#img-two {
+  background-image: url("https://api.lorem.space/image/burger");
+}
+
+#img-three {
+  background-image: url("https://api.lorem.space/image/pizza");
+}
+
+#img-4 {
+  width: 100%;
+  height: 160px;
+  margin-top: 20px;
+  background-image: url("https://api.lorem.space/image/house");
+}
+
+/* itinerary-2-images */
+#itinerary-2-images {
+  margin-top: 20px;
+  height: 160px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 15px;
+}
+
+#img-5 {
+  background-image: url("https://api.lorem.space/image/drink");
+  grid-area: 1 / 1 / 2 / 3;
+}
+
+#img-6 {
+  background-image: url("https://api.lorem.space/image/burger");
+}
+
+p {
+  font-size: 1.3rem;
+  margin-top: 20px;
+}
+
+#new-itinerary-button {
+  width: 100%;
+  margin: 40px 0;
+  height: 50px;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+footer {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+footer p {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    padding: 15px;
+  }
+
+  #itinerary-3-images {
+    height: 238px;
+  }
+
+  #img-4,
+  #itinerary-2-images {
+    height: 106px;
+  }
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
