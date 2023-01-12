@@ -1,5 +1,10 @@
 # Places Itinerary App
 
+## Overview
+Introducing the ultimate travel planner! With just a few taps, you can input your holiday destination, how long you're visiting, and your budget. Our web app then uses the power of Google Places API to show you stunning images of your destination and the OpenAI API to generate a personalised itinerary tailored to you.
+
+From must-see landmarks to hidden gems, our app ensures you make the most of your trip. Say goodbye to the hassle of hours spent researching and hello to an effortless and efficient travel planning experience. Try out our web app today and start planning your next adventure!
+
 ## User Story
 
 ```text
@@ -11,25 +16,24 @@ SO THAT I can plan a trip accordingly
 ## Acceptance Criteria
 
 * Create a places-itinerary dashboard with form inputs.
-  * When a user searches for a city to visit and enters a budget and number of days 
-  they will get a response with suggestions for their itinerary.
-  
- 
-  * Get images for the city
-  
+  * When a user searches for a city to visit and enters a budget and number of days will
+    * Autocomplete search for all the cities around the world.
+    * Get a response with suggestions for their itinerary.
+    * Get a response with suggestions for the activity they can do.
+    * Get images for the city.
+    * The user searches saved for another go.
 
 
+## Mock-Up
+
+The following demonstrates the application functionality:
+
+![A user clicks on slots on the color-coded calendar and edits the events.](./assets/img/001.png)
+
+![A user clicks on slots on the color-coded calendar and edits the events.](./assets/img/002.png)
 
 
+## Links
 
-
-
-
-
-  * A list of each attraction they will visit:
-    * Image for the city
-    * Location in the map
-    * What can they do
-    * The weather in the city
-    * 
-    
+- [Github code link](https://github.com/EmadSaeed2/places-itinerary).
+- [Github live link](https://emadsaeed2.github.io/places-itinerary).
