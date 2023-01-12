@@ -86,7 +86,7 @@ function UpdateItineraryObj() {
 // GET DATA FROM OPEN-AI
 /* *************************************************************************** */
 function getDataFromOpenAI() {
-  var API_KEY = "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";
+  var API_KEY = "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";
   var API_URL =
     "https://api.openai.com/v1/engines/text-davinci-002/completions";
   var prompt = `Give me a short ${itineraryObj.days} days itinerary for to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day and have each day separate.`;
