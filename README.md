@@ -24,6 +24,10 @@ SO THAT I can plan a trip accordingly
     * The user searches saved for another go.
 
 
+## Technologies used
+  * Adobe XD(Wireframing), HTML, CSS, JavaScript, Bootstrap, OpenAI API, Google Places API
+
+
 ## Mock-Up
 
 The following demonstrates the application functionality:
