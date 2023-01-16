@@ -40,4 +40,4 @@ The following demonstrates the application functionality:
 ## Links
 
 - [Github code link](https://github.com/EmadSaeed2/places-itinerary).
-- [Github live link](https://emadsaeed2.github.io/places-itinerary).
+- [Github live link](https://places.itinerary.art-media.uk).
