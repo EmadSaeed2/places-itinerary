@@ -79,7 +79,7 @@ function updateItineraryObj() {
   itineraryObj.imgTwoUrl = `url('${photosArr[1].getUrl()}')`;
   itineraryObj.imgThreeUrl = `url('${photosArr[2].getUrl()}')`;
   itineraryObj.imgFourUrl = photosArr[3].getUrl();
-  console.log(itineraryObj);
+  // console.log(itineraryObj);
 }
 
 /* *************************************************************************** */
