@@ -73,7 +73,7 @@ function createSavedPlaceButton() {
 /* *************************************************************************** */
 // UPDATE ITINERARY OBJECT
 /* *************************************************************************** */
-function UpdateItineraryObj() {
+function updateItineraryObj() {
   itineraryObj.city = autoCity;
   itineraryObj.imgOneUrl = `url('${photosArr[0].getUrl()}')`;
   itineraryObj.imgTwoUrl = `url('${photosArr[1].getUrl()}')`;
@@ -86,7 +86,7 @@ function UpdateItineraryObj() {
 // GET DATA FROM OPEN-AI
 /* *************************************************************************** */
 function getDataFromOpenAI() {
-  var API_KEY = "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";
+  var API_KEY = "API-KEY";
   var API_URL =
     "https://api.openai.com/v1/engines/text-davinci-002/completions";
   var prompt = `Give me a short ${itineraryObj.days} days itinerary for to visit ${itineraryObj.city} with £${itineraryObj.budget}. Don't include the departure as last day and have each day separate.`;
@@ -172,7 +172,7 @@ createItinerarBtn.addEventListener("click", function (e) {
   } else {
     itineraryPlan.innerHTML = "";
     itineraryCityHeader.innerText = "";
-    UpdateItineraryObj();
+    updateItineraryObj();
     displayItineraryUI();
     updateItineraryImagesUI();
     getDataFromOpenAI();
